@@ -8,6 +8,10 @@ const searchBox = document.querySelector('#search-box');
 
 searchBox.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
-function onInput() {
-  console.log(fetchCountries(searchBox.value));
+function onInput(event) {
+  if (event.target.value === '') {
+    return;
+  } else {
+    fetchCountries(searchBox.value.trim());
+  }
 }
